@@ -11,7 +11,7 @@ from models.person import PersonCreate
 def validate_name(name: str) -> None:
     if not name:
         raise ValueError(f"The name is empty.")
-    if len(name) > PERSON_NAME_MIN_LENGTH:
+    if len(name) < PERSON_NAME_MIN_LENGTH:
         raise ValueError(f"The name must be at least {PERSON_NAME_MIN_LENGTH} characters long.")
     if len(name) > PERSON_NAME_MAX_LENGTH:
         raise ValueError(f"The name must be at most {PERSON_NAME_MAX_LENGTH} characters long.")

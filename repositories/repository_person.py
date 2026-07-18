@@ -51,7 +51,7 @@ def create_tables() -> None:
                 name TEXT NOT NULL,
                 phone TEXT NOT NULL UNIQUE,
                 gender_id INTEGER NOT NULL REFERENCES gender(id),
-                address TEXT
+                address TEXT NOT NULL
             )
             """
         )
