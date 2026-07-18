@@ -6,7 +6,7 @@ from typing import Sequence
 from config.paths import PERSON_INPUT_CSV_PATH
 from config.validation import PERSON_CSV_REQUIRED_COLUMNS
 from models.person import PersonCreate
-from normalizers.normaliz_person import (
+from normalizers.normalizer_person import (
     normalize_name,
     normalize_phone,
     normalize_address
