@@ -1,52 +1,68 @@
+from models.person import PersonCreate
+from normalizers.normalizer_person import (
+    normalize_name,
+    normalize_phone,
+    normalize_gender_id,
+    normalize_address
+)
+from validators.validator_person import (
+    validate_name,
+    validate_phone,
+    validate_gender_id,
+    validate_address
+)
+
 def input_name() -> str:
     while True:
+        raw_name = input("Please enter person's name: ")
         try:
-            return validate_name(input("Please enter your name: "))
+            name = normalize_name(raw_name)
+            validate_name(name)
+            return name
         except ValueError as error:
             print(error)
 
 def input_phone() -> str:
-    while True:
-        try:
-            return normalize_phone(input("Please enter your phone number: "))
-        except ValueError as error:
-            print(error)
+     while True:
+            raw_phone = input("Please enter person's phone number: ")
+            try:
+                phone = normalize_phone((raw_phone))
+                validate_phone(phone)
+                return phone
+            except ValueError as error:
+                print(error)
 
-def input_gender() -> int:
+def input_gender_id() -> int:
     while True:
         print("1. Male")
         print("2. Female")
-        choice = input("Select Gender(Number): ").strip()
-        if choice in ("1", "2"):
-            return int(choice)
-        print("The gender must be between 1 and 2")
+        raw_gender_id = input("Please select person's gender id: ")
+        try:
+            gender_id = normalize_gender_id((raw_gender_id))
+            validate_gender_id(gender_id)
+            return gender_id
+        except ValueError as error:
+            print(error)
 
-def input_address() -> str | None:
-    address = input("Please enter your address: ").strip()
-    return address or None
+def input_address() -> str:
+    while True:
+        raw_address = input("Please enter your address: ")
+        try:
+            address = normalize_address((raw_address))
+            validate_address(address)
+            return address
+        except ValueError as error:
+            print(error)
 
 def input_person() -> PersonCreate:
+    name = input_name()
+    phone = input_phone()
+    gender_id = input_gender_id()
+    address = input_address()
     return PersonCreate(
-        name=input_name(),
-        phone=input_phone(),
-        gender_id=input_gender(),
-        address=input_address(),
+        name=name,
+        phone=phone,
+        gender_id=gender_id,
+        address=address
     )
 
-def register_person_manually() -> None:
-    """사람을 한 명씩 직접 입력하여 등록한다."""
-    while True:
-        person = input_person()
-        try:
-            person_id = insert_person(person)
-            print()
-            print("The person has been registered successfully.")
-            print(f"Person ID: {person_id}")
-            print(f"Name: {person.name}")
-        except Exception as error:
-            print()
-            print("Person registration failed.")
-            print(f"Reason: {error}")
-        if not ask_continue():
-            print("Manual registration has ended.")
-            return
