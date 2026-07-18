@@ -13,11 +13,3 @@ INPUT_DIR = RESOURCE_DIR / "input"
 DATABASE_PATH = DATABASE_DIR / "database.db"
 PERSON_INPUT_CSV_PATH = INPUT_DIR / "person_input.csv"
 
-# 입력 규칙
-MIN_NAME_LENGTH = 2
-PHONE_PREFIX = "010"
-DEFAULT_NATIONALITY = "KR"
-
-# 표시 설정
-DATE_FORMAT = "%Y-%m-%d"
-DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"

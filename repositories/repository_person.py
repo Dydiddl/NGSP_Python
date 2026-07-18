@@ -22,7 +22,7 @@ def connect_database() -> sqlite3.Connection:
     connection.row_factory = sqlite3.Row
     return connection
 
-def create_tables() -> None:
+def create_person_tables() -> None:
     """
     SQLite database connection string to create tables
     :return:
@@ -36,6 +36,7 @@ def create_tables() -> None:
             )
             """
         )
+        # 추후에 config에 있는 값을 적용해서 일관적이고 통일되게 할 것
         connection.execute(
             """
             INSERT OR IGNORE INTO gender (id, name)

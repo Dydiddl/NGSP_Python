@@ -1,10 +1,10 @@
 import csv
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Sequence
+from typing import Sequence, TextIO
 
 from config.paths import PERSON_INPUT_CSV_PATH
-from config.validation import PERSON_CSV_REQUIRED_COLUMNS
+from config.validation import PERSON_CSV_REQUIRED_COLUMNS, PERSON_CSV_ENCODING
 from models.person import PersonCreate
 from normalizers.normalizer_person import (
     normalize_name,
@@ -110,7 +110,7 @@ def create_person_from_row(
     return person
 
 
-def open_csv_file(csv_path: Path):
+def open_csv_file(csv_path: Path) -> TextIO:
     """
     CSV 파일을 연다.
 
@@ -120,7 +120,7 @@ def open_csv_file(csv_path: Path):
 
     return csv_path.open(
         mode="r",
-        encoding="cp949",
+        encoding=PERSON_CSV_ENCODING,
         newline="",
     )
 
@@ -151,7 +151,7 @@ def import_persons_from_csv(
                 person = create_person_from_row(row)
                 insert_person(person)
                 success_count += 1
-            except Exception as error:
+            except ValueError as error:
                 errors.append(
                     CsvImportError(
                         row_number=row_number,
