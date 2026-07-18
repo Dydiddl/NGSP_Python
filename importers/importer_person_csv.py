@@ -3,7 +3,7 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-from config import PERSON_INPUT_CSV_PATH
+from config.paths import PERSON_INPUT_CSV_PATH
 from models.person import PersonCreate
 from repositories.repository_person import insert_person
 

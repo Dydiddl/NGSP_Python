@@ -6,11 +6,11 @@ class Person:
     name: str
     phone: str
     gender_id: int
-    address: str | None = None
+    address: str
 
 @dataclasses.dataclass
 class PersonCreate:
     name: str
     phone: str
     gender_id: int
-    address: str | None = None
+    address: str

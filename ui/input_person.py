@@ -1,20 +1,25 @@
-from config import validation
 from models.person import PersonCreate
+from validators.validator_person import (
+normalize_phone,
+validate_name,
+validate_gender_id,
+validate_address,
+)
 
 
 def input_name() -> str:
     while True:
-        name = input("Please enter your name: ").strip()
-        if validation.is_valid_name(name):
-            return name
-        print("The name must be at least two characters long")
+        try:
+            return validate_name(input("Please enter your name: "))
+        except ValueError as error:
+            print(error)
 
 def input_phone() -> str:
     while True:
-        phone = input("phone : ").strip()
-        if validation.is_valid_phone(phone):
-            return phone
-        print("The mobile phone number format is incorrect")
+        try:
+            return normalize_phone(input("Please enter your phone number: "))
+        except ValueError as error:
+            print(error)
 
 def input_gender() -> int:
     while True:

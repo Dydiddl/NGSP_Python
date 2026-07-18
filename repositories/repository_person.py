@@ -4,7 +4,7 @@ import sqlite3
 
 # 다른 파일에 만들어 둔 클래스를 가져온다.
 from models.person import PersonCreate
-from config import DATABASE_PATH
+from config.paths import DATABASE_PATH
 
 
 def connect_database() -> sqlite3.Connection:
