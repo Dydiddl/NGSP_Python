@@ -1,0 +1,36 @@
+# Python virtual environment
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*pyc
+
+# PyCharm
+.idea/
+
+# Environment and secrets
+.env
+.env.*
+
+# SQLite runtime databases
+*.db
+*.sqlite
+*.sqlite3
+
+# 업무 데이터
+data/
+
+# csv file
+*.csv
+*.CSV
+
+# Excel
+*.xlsx
+*.xls
+
+# OS files
+.DS_Store
+Thumbs.db
+

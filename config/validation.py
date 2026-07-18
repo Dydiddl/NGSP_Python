@@ -1,0 +1,20 @@
+# person
+
+# name
+PERSON_NAME_MIN_LENGTH = 2
+PERSON_NAME_MAX_LENGTH = 50
+# phone
+PERSON_PHONE_LENGTH = 11
+PERSON_PHONE_PREFIX = "010"
+# address
+PERSON_ADDRESS_MIN_LENGTH = 1
+PERSON_ADDRESS_MAX_LENGTH = 200
+# gender
+PERSON_VALID_GENDER_IDS = (1, 2)
+# CSV
+PERSON_CSV_REQUIRED_COLUMNS = (
+    "name",
+    "phone",
+    "gender_id",
+    "address"
+)
