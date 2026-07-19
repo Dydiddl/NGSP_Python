@@ -13,13 +13,12 @@ def select_main_menu() -> str | None:
 
         choice = input("Select: ").strip()
 
-        if choice == 0:
+        if choice == "0":
             print("프로그램을 종료합니다.")
             break
-        if choice == 1:
+        if choice == "1":
             select_person_menu()
-        if choice == 2:
+        if choice == "2":
             print("2. Project Management는 개발중입니다.")
-
 
         print("Please select 0, 1, or 2.")

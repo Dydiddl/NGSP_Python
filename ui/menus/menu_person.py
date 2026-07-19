@@ -1,7 +1,6 @@
-from ui.menus.menu_main import select_main_menu
 from services.service_person import service_person_register_csv, service_person_register_manual
 
-def select_person_menu() -> str:
+def select_person_menu() -> None:
     """사람 관리 기능을 선택받는다."""
     while True:
         print()
@@ -13,14 +12,24 @@ def select_person_menu() -> str:
 
         choice = input("Select: ").strip()
 
-        if choice == 0:
-            select_main_menu()
-        if choice == 1:
-            select_person_registration_method()
-        if choice == 2:
-            print("2. View People은 개발중입니다.")
+        try:
+            if choice == "0":
+                return
+            elif choice == "1":
+                result = select_person_registration_method()
+                print()
+                print("사람 등록이 완료되었습니다.")
+                print(f"Person ID: {result}")
+            elif choice == "2":
+                print("검색기능은 개발중입니다.")
+            else:
+                print("메뉴번호를 정확히 확인하세요.")
 
-        print("Please select 0 ~ 2.")
+        except ValueError as error:
+            print(f"처리 실패: {error}")
+        except RuntimeError as error:
+            print(f"프로그램 처리 중 문제가 발생했습니다: {error}")
+
 
 
 def select_person_registration_method() -> str | None:
@@ -35,11 +44,11 @@ def select_person_registration_method() -> str | None:
 
         choice = input("Select: ").strip()
 
-        if choice == 0:
-            break
-        if choice == 1:
+        if choice == "0":
+            return
+        if choice == "1":
             service_person_register_csv()
-        if choice == 2:
+        if choice == "2":
             service_person_register_manual()
 
         print("Please select 0, 1, or 2.")

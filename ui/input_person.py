@@ -13,7 +13,6 @@ from validators.validator_person import (
 )
 
 
-
 def input_person() -> PersonCreate:
     name = input_name()
     phone = input_phone()

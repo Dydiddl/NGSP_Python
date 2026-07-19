@@ -4,10 +4,10 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 # 폴더 경로
-RESOURCE_DIR = PROJECT_ROOT / "data"
-DATABASE_DIR = RESOURCE_DIR / "database"
+DATA_DIR = PROJECT_ROOT / "data"
+DATABASE_DIR = DATA_DIR / "database"
 
-INPUT_DIR = RESOURCE_DIR / "input"
+INPUT_DIR = DATA_DIR / "input"
 
 # 파일 경로
 DATABASE_PATH = DATABASE_DIR / "database.db"

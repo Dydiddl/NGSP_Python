@@ -1,27 +1,22 @@
+from importers.importer_person_csv import import_persons_from_csv
 from models.person import PersonCreate
 from ui.input_person import input_person
 
-def insert_person(
-    name,
-    phone,
-    gender,
-    address,
-):
-
-    person = PersonCreate(
-        name=name,
-        phone=phone,
-        gender_id=gender,
-        address=address,
-    )
-
- 
 
 def service_person_register_csv():
-    return
+    """
+    CSV 파일에 있는 사람들을 데이터베이스에 등록한다.
 
-def service_person_register_manual():
-    """사용자로부터 한 사람의 정보를 입력받아 데이터베이스에 등록한다."""
-    person_create = input_person()
-    person_id = insert_person(person_create)
-    return
+    :return:
+        성공 개수와 실패 개수
+    """
+    return import_persons_from_csv()
+
+def service_person_register_manual(person: PersonCreate) -> int:
+    """
+    사람 정보를 수동으로 입력받아 데이터베이스에 등록한다.
+
+    :return:
+        새롭게 등록된 사람의 ID
+    """
+    return insert_person(person)
