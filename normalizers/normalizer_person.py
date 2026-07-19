@@ -14,9 +14,14 @@ def normalize_phone(phone: str) -> str:
     """
     return re.sub(r"\D", "", phone)
 
-def normalize_gender_id(value: str ) -> int:
-    """CSV 값의 앞뒤 공백을 제거한다."""
-    return int(value.strip())
+def convert_gender_id(value: str) -> int:
+    stripped_value = value.strip()
+    if not stripped_value:
+        raise ValueError("성별 ID가 비어 있습니다.")
+    try:
+        return int(stripped_value)
+    except ValueError as error:
+        raise ValueError("성별 ID는 숫자여야 합니다.") from error
 
 def normalize_address(address: str) -> str:
     """주소의 앞뒤 공백을 제거한다."""

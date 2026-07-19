@@ -1,3 +1,5 @@
+from importers.importer_person_csv import import_persons_from_csv
+
 def register_persons_from_csv() -> None:
     """설정된 CSV 파일에서 사람들을 일괄 등록한다."""
     print()

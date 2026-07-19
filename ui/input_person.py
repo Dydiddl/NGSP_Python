@@ -2,7 +2,7 @@ from models.person import PersonCreate
 from normalizers.normalizer_person import (
     normalize_name,
     normalize_phone,
-    normalize_gender_id,
+    convert_gender_id,
     normalize_address
 )
 from validators.validator_person import (
@@ -11,6 +11,7 @@ from validators.validator_person import (
     validate_gender_id,
     validate_address
 )
+from repositories.repository_person import insert_person
 
 def input_name() -> str:
     while True:
@@ -38,7 +39,7 @@ def input_gender_id() -> int:
         print("2. Female")
         raw_gender_id = input("Please select person's gender id: ")
         try:
-            gender_id = normalize_gender_id((raw_gender_id))
+            gender_id = convert_gender_id((raw_gender_id))
             validate_gender_id(gender_id)
             return gender_id
         except ValueError as error:
