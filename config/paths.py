@@ -5,7 +5,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 # 폴더 경로
 RESOURCE_DIR = PROJECT_ROOT / "data"
-DATABASE_DIR = PROJECT_ROOT / "database"
+DATABASE_DIR = RESOURCE_DIR / "database"
 
 INPUT_DIR = RESOURCE_DIR / "input"
 

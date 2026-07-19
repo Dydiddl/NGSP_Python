@@ -1,37 +1,27 @@
-from importers.importer_person_csv import import_persons_from_csv
+from models.person import PersonCreate
+from ui.input_person import input_person
 
-def register_persons_from_csv() -> None:
-    """설정된 CSV 파일에서 사람들을 일괄 등록한다."""
-    print()
-    print("CSV registration has started.")
-    try:
-        result = import_persons_from_csv()
-    except FileNotFoundError as error:
-        print()
-        print("CSV file could not be found.")
-        print(error)
-        return
-    except ValueError as error:
-        print()
-        print("The CSV file structure is incorrect.")
-        print(error)
-        return
-    except Exception as error:
-        print()
-        print("An unexpected error occurred.")
-        print(error)
-        return
-    print()
-    print("========== CSV Registration Result ==========")
-    print(f"Successful: {result.success_count}")
-    print(f"Failed: {len(result.errors)}")
-    print("=============================================")
-    if result.errors:
-        print()
-        print("Failed rows")
-        for error in result.errors:
-            print(
-                f"- Row {error.row_number}: "
-                f"{error.name or '(No name)'} / "
-                f"{error.reason}"
-            )
+def insert_person(
+    name,
+    phone,
+    gender,
+    address,
+):
+
+    person = PersonCreate(
+        name=name,
+        phone=phone,
+        gender_id=gender,
+        address=address,
+    )
+
+ 
+
+def service_person_register_csv():
+    return
+
+def service_person_register_manual():
+    """사용자로부터 한 사람의 정보를 입력받아 데이터베이스에 등록한다."""
+    person_create = input_person()
+    person_id = insert_person(person_create)
+    return

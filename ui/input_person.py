@@ -11,7 +11,20 @@ from validators.validator_person import (
     validate_gender_id,
     validate_address
 )
-from repositories.repository_person import insert_person
+
+
+
+def input_person() -> PersonCreate:
+    name = input_name()
+    phone = input_phone()
+    gender_id = input_gender_id()
+    address = input_address()
+    return PersonCreate(
+        name=name,
+        phone=phone,
+        gender_id=gender_id,
+        address=address
+    )
 
 def input_name() -> str:
     while True:
@@ -54,16 +67,3 @@ def input_address() -> str:
             return address
         except ValueError as error:
             print(error)
-
-def input_person() -> PersonCreate:
-    name = input_name()
-    phone = input_phone()
-    gender_id = input_gender_id()
-    address = input_address()
-    return PersonCreate(
-        name=name,
-        phone=phone,
-        gender_id=gender_id,
-        address=address
-    )
-

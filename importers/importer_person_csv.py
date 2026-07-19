@@ -67,21 +67,6 @@ def validate_csv_headers(
         )
 
 
-def convert_gender_id(value: str) -> int:
-    """
-    CSV에서 읽은 gender_id 문자열을 정수로 변환한다.
-    허용되는 성별 ID인지 확인하는 작업은 validator_person.validate_gender_id()가 담당한다.
-    """
-    if not value:
-        raise ValueError("성별 ID가 비어 있습니다.")
-    try:
-        return int(value)
-    except ValueError as error:
-        raise ValueError(
-            "성별 ID는 숫자여야 합니다."
-        ) from error
-
-
 def create_person_from_row(
         row: dict[str, str | None],
 ) -> PersonCreate:
